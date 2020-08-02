@@ -80,6 +80,7 @@ public class fdaSort {
             Node Current = root;
             Node Past = null;
             for (int j = 2; j < array[i][1] + 1; j++) {
+                newNode=new Node();
                 if (array[i][j] == 0) {
                     Past = Current;
                     Current = Past.left;
@@ -101,12 +102,6 @@ public class fdaSort {
                     Current.statue = array[i][0];
                 }
             }
-        }
-        Node Current=root;
-        for(int i = 0; i<5;i++){
-
-            System.out.print(Current.right);
-            Current=Current.left;
         }
         return root;
     }
