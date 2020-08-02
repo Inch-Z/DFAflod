@@ -1,3 +1,5 @@
+import org.omg.CORBA.Current;
+
 import java.lang.reflect.Array;
 import java.util.Scanner;
 
@@ -80,16 +82,18 @@ public class fdaSort {
             for (int j = 2; j < array[i][1] + 1; j++) {
                 if (array[i][j] == 0) {
                     Past = Current;
-                    Current = Current.left;
+                    Current = Past.left;
                     if (Current==null){
                         Current=newNode;
+                        Past.left=Current;
                     }
                     Current.parent = Past;
                 } else {
                     Past = Current;
-                    Current = Current.right;
+                    Current = Past.right;
                     if (Current==null){
                         Current=newNode;
+                        Past.right=Current;
                     }
                     Current.parent = Past;
                 }
@@ -97,6 +101,12 @@ public class fdaSort {
                     Current.statue = array[i][0];
                 }
             }
+        }
+        Node Current=root;
+        for(int i = 0; i<5;i++){
+
+            System.out.print(Current.right);
+            Current=Current.left;
         }
         return root;
     }
